@@ -1,0 +1,428 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;\red242\green242\blue242;\red180\green36\blue25;\red47\green180\blue29;
+\red159\green160\blue28;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs20 \cf2 \cb0 \CocoaLigature0 Last login: Mon Sep 28 18:06:51 on console\
+ent-v314-007:~ student$ git --version\
+git version 1.9.3 (Apple Git-50)\
+ent-v314-007:~ student$ cd ~/Destop\
+-bash: cd: /Users/student/Destop: No such file or directory\
+ent-v314-007:~ student$ cd ~\
+ent-v314-007:~ student$ ls\
+Applications		Movies			Sites			stuff\
+Desktop			Music			Things			test\
+Documents		My Song.band		VirtualBox VMs		vms\
+Downloads		Pictures		mtec1003-lab-03\
+Library			Public			mtec1003-lab-03.tar.gz\
+ent-v314-007:~ student$ cd desktop\
+ent-v314-007:desktop student$ pwd\
+/Users/student/desktop\
+ent-v314-007:desktop student$ mkdir jalberto\
+ent-v314-007:desktop student$ pwd\
+/Users/student/desktop\
+ent-v314-007:desktop student$ cd jalberto\
+ent-v314-007:jalberto student$ mkdir lab-04-version-control\
+ent-v314-007:jalberto student$ cd lab-04-version-control/\
+ent-v314-007:lab-04-version-control student$ pwd\
+/Users/student/desktop/jalberto/lab-04-version-control\
+ent-v314-007:lab-04-version-control student$ ls -al\
+total 0\
+drwxr-xr-x  2 student  staff   68 Sep 28 18:32 .\
+drwxr-xr-x  3 student  staff  102 Sep 28 18:32 ..\
+ent-v314-007:lab-04-version-control student$ git init\
+Initialized empty Git repository in /Users/student/Desktop/jalberto/lab-04-version-control/.git/\
+ent-v314-007:lab-04-version-control student$ ls -al\
+total 0\
+drwxr-xr-x   3 student  staff  102 Sep 28 18:33 .\
+drwxr-xr-x   3 student  staff  102 Sep 28 18:32 ..\
+drwxr-xr-x  10 student  staff  340 Sep 28 18:33 .git\
+ent-v314-007:lab-04-version-control student$ ls .git\
+HEAD		config		hooks		objects\
+branches	description	info		refs\
+ent-v314-007:lab-04-version-control student$ git config user.name "josue"\
+ent-v314-007:lab-04-version-control student$ git config user.email "albertojosue@gmail.com"\
+ent-v314-007:lab-04-version-control student$ git config -l\
+filter.media.clean=git media clean %f\
+filter.media.smudge=git media smudge %f\
+filter.media.required=true\
+filter.lfs.clean=git-lfs clean %f\
+filter.lfs.smudge=git-lfs smudge %f\
+filter.lfs.required=true\
+core.repositoryformatversion=0\
+core.filemode=true\
+core.bare=false\
+core.logallrefupdates=true\
+core.ignorecase=true\
+core.precomposeunicode=true\
+user.name=josue\
+user.email=albertojosue@gmail.com\
+ent-v314-007:lab-04-version-control student$ curl -u 'albertojosue' https://api.github.com/user/repos -d '\{"jalberto":"lab-04-version-control"\}'\
+Enter host password for user 'albertojosue':\
+\{\
+  "message": "Validation Failed",\
+  "errors": [\
+    \{\
+      "resource": "Repository",\
+      "code": "missing_field",\
+      "field": "name"\
+    \},\
+    \{\
+      "resource": "Repository",\
+      "code": "custom",\
+      "field": "name",\
+      "message": "name is too short (minimum is 1 characters)"\
+    \}\
+  ],\
+  "documentation_url": "https://developer.github.com/v3/repos/#create"\
+\}\
+ent-v314-007:lab-04-version-control student$ curl -u 'albertojosue' https://api.github.com/user/repos -d '\{"jalberto":"lab-04-version-control"\}'\
+Enter host password for user 'albertojosue':\
+\{\
+  "message": "Bad credentials",\
+  "documentation_url": "https://developer.github.com/v3"\
+\}\
+ent-v314-007:lab-04-version-control student$ curl -u 'albertojosue' https://api.github.com/user/repos -d '\{"jalberto":"lab-04-version-control"\}'\
+Enter host password for user 'albertojosue':\
+\{\
+  "message": "Validation Failed",\
+  "errors": [\
+    \{\
+      "resource": "Repository",\
+      "code": "missing_field",\
+      "field": "name"\
+    \},\
+    \{\
+      "resource": "Repository",\
+      "code": "custom",\
+      "field": "name",\
+      "message": "name is too short (minimum is 1 characters)"\
+    \}\
+  ],\
+  "documentation_url": "https://developer.github.com/v3/repos/#create"\
+\}\
+ent-v314-007:lab-04-version-control student$ curl -u 'albertojosue' https://api.github.com/user/repos -d '\{"name":"lab-04-version-control"\}'\
+Enter host password for user 'albertojosue':\
+\{\
+  "id": 43331134,\
+  "name": "lab-04-version-control",\
+  "full_name": "albertojosue/lab-04-version-control",\
+  "owner": \{\
+    "login": "albertojosue",\
+    "id": 6539184,\
+    "avatar_url": "https://avatars.githubusercontent.com/u/6539184?v=3",\
+    "gravatar_id": "",\
+    "url": "https://api.github.com/users/albertojosue",\
+    "html_url": "https://github.com/albertojosue",\
+    "followers_url": "https://api.github.com/users/albertojosue/followers",\
+    "following_url": "https://api.github.com/users/albertojosue/following\{/other_user\}",\
+    "gists_url": "https://api.github.com/users/albertojosue/gists\{/gist_id\}",\
+    "starred_url": "https://api.github.com/users/albertojosue/starred\{/owner\}\{/repo\}",\
+    "subscriptions_url": "https://api.github.com/users/albertojosue/subscriptions",\
+    "organizations_url": "https://api.github.com/users/albertojosue/orgs",\
+    "repos_url": "https://api.github.com/users/albertojosue/repos",\
+    "events_url": "https://api.github.com/users/albertojosue/events\{/privacy\}",\
+    "received_events_url": "https://api.github.com/users/albertojosue/received_events",\
+    "type": "User",\
+    "site_admin": false\
+  \},\
+  "private": false,\
+  "html_url": "https://github.com/albertojosue/lab-04-version-control",\
+  "description": null,\
+  "fork": false,\
+  "url": "https://api.github.com/repos/albertojosue/lab-04-version-control",\
+  "forks_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/forks",\
+  "keys_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/keys\{/key_id\}",\
+  "collaborators_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/collaborators\{/collaborator\}",\
+  "teams_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/teams",\
+  "hooks_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/hooks",\
+  "issue_events_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/issues/events\{/number\}",\
+  "events_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/events",\
+  "assignees_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/assignees\{/user\}",\
+  "branches_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/branches\{/branch\}",\
+  "tags_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/tags",\
+  "blobs_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/git/blobs\{/sha\}",\
+  "git_tags_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/git/tags\{/sha\}",\
+  "git_refs_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/git/refs\{/sha\}",\
+  "trees_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/git/trees\{/sha\}",\
+  "statuses_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/statuses/\{sha\}",\
+  "languages_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/languages",\
+  "stargazers_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/stargazers",\
+  "contributors_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/contributors",\
+  "subscribers_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/subscribers",\
+  "subscription_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/subscription",\
+  "commits_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/commits\{/sha\}",\
+  "git_commits_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/git/commits\{/sha\}",\
+  "comments_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/comments\{/number\}",\
+  "issue_comment_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/issues/comments\{/number\}",\
+  "contents_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/contents/\{+path\}",\
+  "compare_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/compare/\{base\}...\{head\}",\
+  "merges_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/merges",\
+  "archive_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/\{archive_format\}\{/ref\}",\
+  "downloads_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/downloads",\
+  "issues_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/issues\{/number\}",\
+  "pulls_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/pulls\{/number\}",\
+  "milestones_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/milestones\{/number\}",\
+  "notifications_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/notifications\{?since,all,participating\}",\
+  "labels_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/labels\{/name\}",\
+  "releases_url": "https://api.github.com/repos/albertojosue/lab-04-version-control/releases\{/id\}",\
+  "created_at": "2015-09-28T22:42:20Z",\
+  "updated_at": "2015-09-28T22:42:20Z",\
+  "pushed_at": "2015-09-28T22:42:20Z",\
+  "git_url": "git://github.com/albertojosue/lab-04-version-control.git",\
+  "ssh_url": "git@github.com:albertojosue/lab-04-version-control.git",\
+  "clone_url": "https://github.com/albertojosue/lab-04-version-control.git",\
+  "svn_url": "https://github.com/albertojosue/lab-04-version-control",\
+  "homepage": null,\
+  "size": 0,\
+  "stargazers_count": 0,\
+  "watchers_count": 0,\
+  "language": null,\
+  "has_issues": true,\
+  "has_downloads": true,\
+  "has_wiki": true,\
+  "has_pages": false,\
+  "forks_count": 0,\
+  "mirror_url": null,\
+  "open_issues_count": 0,\
+  "forks": 0,\
+  "open_issues": 0,\
+  "watchers": 0,\
+  "default_branch": "master",\
+  "permissions": \{\
+    "admin": true,\
+    "push": true,\
+    "pull": true\
+  \},\
+  "network_count": 0,\
+  "subscribers_count": 1\
+\}\
+ent-v314-007:lab-04-version-control student$ owd\
+-bash: owd: command not found\
+ent-v314-007:lab-04-version-control student$ pwd\
+/Users/student/desktop/jalberto/lab-04-version-control\
+ent-v314-007:lab-04-version-control student$ git remote -v show\
+ent-v314-007:lab-04-version-control student$ git remote add origin https://github.com/albertojosue/lab-04-version-control.git\
+ent-v314-007:lab-04-version-control student$ git remote -v show\
+origin	https://github.com/albertojosue/lab-04-version-control.git (fetch)\
+origin	https://github.com/albertojosue/lab-04-version-control.git (push)\
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+\
+Initial commit\
+\
+nothing to commit (create/copy files and use "git add" to track)\
+ent-v314-007:lab-04-version-control student$ touch README.markdown\
+ent-v314-007:lab-04-version-control student$ nano README.markdown \
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+\
+Initial commit\
+\
+Untracked files:\
+  (use "git add <file>..." to include in what will be committed)\
+\
+	\cf3 README.markdown\cf2 \
+\
+nothing added to commit but untracked files present (use "git add" to track)\
+ent-v314-007:lab-04-version-control student$ git commit -m "added a README file"\
+On branch master\
+\
+Initial commit\
+\
+Untracked files:\
+	\cf3 README.markdown\cf2 \
+\
+nothing added to commit but untracked files present\
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+\
+Initial commit\
+\
+Untracked files:\
+  (use "git add <file>..." to include in what will be committed)\
+\
+	\cf3 README.markdown\cf2 \
+\
+nothing added to commit but untracked files present (use "git add" to track)\
+ent-v314-007:lab-04-version-control student$ git commit -m "added a README file"\
+On branch master\
+\
+Initial commit\
+\
+Untracked files:\
+	\cf3 README.markdown\cf2 \
+\
+nothing added to commit but untracked files present\
+ent-v314-007:lab-04-version-control student$ git add --all\
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+\
+Initial commit\
+\
+Changes to be committed:\
+  (use "git rm --cached <file>..." to unstage)\
+\
+	\cf4 new file:   README.markdown\cf2 \
+\
+ent-v314-007:lab-04-version-control student$ git commit -m "added a README file"\
+[master (root-commit) 16589d6] added a README file\
+ 1 file changed, 1 insertion(+)\
+ create mode 100644 README.markdown\
+ent-v314-007:lab-04-version-control student$ git log --color\
+\cf5 commit 16589d62de1dd255fd13aaea8a87eafe6775901c\cf2 \
+Author: josue <albertojosue@gmail.com>\
+Date:   Mon Sep 28 18:52:36 2015 -0400\
+\
+    added a README file\
+ent-v314-007:lab-04-version-control student$ git push origin master\
+Username for 'https://github.com': albertojosue\
+Password for 'https://albertojosue@github.com': \
+Counting objects: 3, done.\
+Writing objects: 100% (3/3), 237 bytes | 0 bytes/s, done.\
+Total 3 (delta 0), reused 0 (delta 0)\
+To https://github.com/albertojosue/lab-04-version-control.git\
+ * [new branch]      master -> master\
+ent-v314-007:lab-04-version-control student$ nano README.markdown \
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+Changes not staged for commit:\
+  (use "git add <file>..." to update what will be committed)\
+  (use "git checkout -- <file>..." to discard changes in working directory)\
+\
+	\cf3 modified:   README.markdown\cf2 \
+\
+no changes added to commit (use "git add" and/or "git commit -a")\
+ent-v314-007:lab-04-version-control student$ git add\
+Nothing specified, nothing added.\
+Maybe you wanted to say 'git add .'?\
+ent-v314-007:lab-04-version-control student$ git --add all\
+Unknown option: --add\
+usage: git [--version] [--help] [-C <path>] [-c name=value]\
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]\
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\
+           <command> [<args>]\
+ent-v314-007:lab-04-version-control student$ git add --all\
+ent-v314-007:lab-04-version-control student$ git commit\
+\
+[1]+  Stopped                 git commit\
+ent-v314-007:lab-04-version-control student$ git commit\
+\
+[2]+  Stopped                 git commit\
+ent-v314-007:lab-04-version-control student$ git push origin master\
+Everything up-to-date\
+ent-v314-007:lab-04-version-control student$ nano README.markdown\
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+Changes to be committed:\
+  (use "git reset HEAD <file>..." to unstage)\
+\
+	\cf4 modified:   README.markdown\cf2 \
+\
+ent-v314-007:lab-04-version-control student$ git add --all\
+ent-v314-007:lab-04-version-control student$ git commit\
+\
+[3]+  Stopped                 git commit\
+ent-v314-007:lab-04-version-control student$ git diff --color\
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+Changes to be committed:\
+  (use "git reset HEAD <file>..." to unstage)\
+\
+	\cf4 modified:   README.markdown\cf2 \
+\
+ent-v314-007:lab-04-version-control student$ git push\
+warning: push.default is unset; its implicit value is changing in\
+Git 2.0 from 'matching' to 'simple'. To squelch this message\
+and maintain the current behavior after the default changes, use:\
+\
+  git config --global push.default matching\
+\
+To squelch this message and adopt the new behavior now, use:\
+\
+  git config --global push.default simple\
+\
+When push.default is set to 'matching', git will push local branches\
+to the remote branches that already exist with the same name.\
+\
+In Git 2.0, Git will default to the more conservative 'simple'\
+behavior, which only pushes the current branch to the corresponding\
+remote branch that 'git pull' uses to update the current branch.\
+\
+See 'git help config' and search for 'push.default' for further information.\
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode\
+'current' instead of 'simple' if you sometimes use older versions of Git)\
+\
+Everything up-to-date\
+ent-v314-007:lab-04-version-control student$ touch test.sh\
+ent-v314-007:lab-04-version-control student$ nano test.sh\
+ent-v314-007:lab-04-version-control student$ git push\
+warning: push.default is unset; its implicit value is changing in\
+Git 2.0 from 'matching' to 'simple'. To squelch this message\
+and maintain the current behavior after the default changes, use:\
+\
+  git config --global push.default matching\
+\
+To squelch this message and adopt the new behavior now, use:\
+\
+  git config --global push.default simple\
+\
+When push.default is set to 'matching', git will push local branches\
+to the remote branches that already exist with the same name.\
+\
+In Git 2.0, Git will default to the more conservative 'simple'\
+behavior, which only pushes the current branch to the corresponding\
+remote branch that 'git pull' uses to update the current branch.\
+\
+See 'git help config' and search for 'push.default' for further information.\
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode\
+'current' instead of 'simple' if you sometimes use older versions of Git)\
+\
+Everything up-to-date\
+ent-v314-007:lab-04-version-control student$ git add --all\
+ent-v314-007:lab-04-version-control student$ git commit\
+error: There was a problem with the editor 'vi'.\
+Please supply the message using either -m or -F option.\
+ent-v314-007:lab-04-version-control student$ git commit -m "added a README file"\
+[master a53b27d] added a README file\
+ 2 files changed, 2 insertions(+)\
+ create mode 100644 test.sh\
+ent-v314-007:lab-04-version-control student$ git push\
+warning: push.default is unset; its implicit value is changing in\
+Git 2.0 from 'matching' to 'simple'. To squelch this message\
+and maintain the current behavior after the default changes, use:\
+\
+  git config --global push.default matching\
+\
+To squelch this message and adopt the new behavior now, use:\
+\
+  git config --global push.default simple\
+\
+When push.default is set to 'matching', git will push local branches\
+to the remote branches that already exist with the same name.\
+\
+In Git 2.0, Git will default to the more conservative 'simple'\
+behavior, which only pushes the current branch to the corresponding\
+remote branch that 'git pull' uses to update the current branch.\
+\
+See 'git help config' and search for 'push.default' for further information.\
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode\
+'current' instead of 'simple' if you sometimes use older versions of Git)\
+\
+Counting objects: 6, done.\
+Delta compression using up to 16 threads.\
+Compressing objects: 100% (2/2), done.\
+Writing objects: 100% (4/4), 348 bytes | 0 bytes/s, done.\
+Total 4 (delta 0), reused 0 (delta 0)\
+To https://github.com/albertojosue/lab-04-version-control.git\
+   16589d6..a53b27d  master -> master\
+ent-v314-007:lab-04-version-control student$ git status\
+On branch master\
+nothing to commit, working directory clean\
+ent-v314-007:lab-04-version-control student$ ls\
+README.markdown	test.sh\
+ent-v314-007:lab-04-version-control student$ \
+}
